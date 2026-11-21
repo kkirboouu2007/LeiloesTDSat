@@ -1,5 +1,6 @@
 
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -154,8 +155,10 @@ public class cadastroVIEW extends javax.swing.JFrame {
         ProdutosDAO produtodao = new ProdutosDAO();
         try {
             produtodao.cadastrarProduto(produto);
+            JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso");
         } catch (SQLException ex) {
             System.getLogger(cadastroVIEW.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            JOptionPane.showMessageDialog(null, "Erro ao tentar efetuar cadastro");
         }
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
