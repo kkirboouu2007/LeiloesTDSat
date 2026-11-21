@@ -22,7 +22,7 @@ public class conectaDAO {
         
         try {
             //alterar de acordo com o usuario e senha
-            conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/senac?user=root&password=");
+            conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/senac?user=root,password=");
             
         } catch (SQLException erro){
             JOptionPane.showMessageDialog(null, "Erro ConectaDAO" + erro.getMessage());
