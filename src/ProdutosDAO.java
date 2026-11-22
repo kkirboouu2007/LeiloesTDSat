@@ -33,6 +33,19 @@ public class ProdutosDAO {
         
     }
     
+    public void venderProduto (int id) {
+        
+        try {
+            conn = new conectaDAO().connectDB();
+            prep = conn.prepareStatement("UPDATE produtos SET status = 'Vendido' WHERE id = ?");
+            prep.setInt(1, id);
+            prep.executeUpdate();
+        } catch (SQLException ex){
+            System.getLogger(ProdutosDAO.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+    }
+            
+            
     public ArrayList<ProdutosDTO> listarProdutos(){
         try {
             String sql = "SELECT * FROM produtos";
@@ -48,6 +61,7 @@ public class ProdutosDAO {
                 
                 listagem.add(produto);
             } 
+
         } catch (SQLException ex) {
             System.getLogger(ProdutosDAO.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
