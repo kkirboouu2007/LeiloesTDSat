@@ -19,7 +19,8 @@ public class vendasVIEW extends javax.swing.JFrame {
     public void preencherTabela(){
         ProdutosDAO produtosDao = new ProdutosDAO();
         
-        ArrayList<ProdutosDTO> listaProdutos = produtosDao.listarProdutos();
+        String status = "Vendido";
+        ArrayList<ProdutosDTO> listaProdutos = produtosDao.listarProdutos(status);
         DefaultTableModel tabelaProdutosCadastrados = (DefaultTableModel) tblProdutosCadastrados.getModel();
         tabelaProdutosCadastrados.setNumRows(0);
         tblProdutosCadastrados.setRowSorter(new TableRowSorter(tabelaProdutosCadastrados));
@@ -64,10 +65,7 @@ public class vendasVIEW extends javax.swing.JFrame {
         tblProdutosCadastrados.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         tblProdutosCadastrados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nome", "Valor", "Status"
@@ -83,7 +81,7 @@ public class vendasVIEW extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblProdutosCadastrados);
 
-        jButton1.setText("Buscar");
+        jButton1.setText("Listar");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

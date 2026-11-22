@@ -46,14 +46,15 @@ public class ProdutosDAO {
     }
             
             
-    public ArrayList<ProdutosDTO> listarProdutos(){
+    public ArrayList<ProdutosDTO> listarProdutos(String status){
         try {
-            String sql = "SELECT * FROM produtos";
+            String sql = "SELECT * FROM produtos WHERE status LIKE ?";
             conn = new conectaDAO().connectDB();
             prep = conn.prepareStatement(sql);
+            prep.setString(1, "%" + status + "%");
             resultset = prep.executeQuery();
-            ProdutosDTO produto = new ProdutosDTO();
             while (resultset.next()) {
+                ProdutosDTO produto = new ProdutosDTO();
                 produto.setId(resultset.getInt("id"));
                 produto.setNome(resultset.getString("nome"));
                 produto.setValor(resultset.getInt("valor"));
